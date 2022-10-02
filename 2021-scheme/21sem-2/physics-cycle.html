@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../../index.css"/>
+   <script type="text/javascript">
+
+       function Calculate() {
+        const tc=20;
+        var sum=0;
+        var sgpa;
+        const credits = [3,3,3,3,3,1,1,2,1];
+        const sub = ["21MAT21","21PHY22","21ELE23","21CIV24","21EGDL25","21PHYL26","21ELEL27","21EGH28","21ITD29"];
+        sub.forEach(myFunction);
+
+        function myFunction(value, index, array) {
+          var g = document.getElementById(value).value;
+          if (g >=90){
+            sum+=10*credits[index];
+          }
+          else if (g >=80){
+            sum+=9*credits[index];
+          }
+          else if (g >=70){
+            sum+=8*credits[index];
+          }
+          else if (g >=60){
+            sum+=7*credits[index];
+          }
+          else if (g >=45){
+            sum+=6*credits[index];
+          }
+          else if (g >=40){
+            sum+=4*credits[index];
+          }
+          else{
+            sum+=0;
+          }
+        }
+        sgpa = sum/tc;
+        document.getElementById('sgpa').value = sgpa.toFixed(2);
+       }
+
+    </script>
+  </head>
+  <body>
+    <form>
+      <div class="container mb-5">
+        <h2>1ST SEMESTER PHYSICS CYCLE</h2>
+        <div class="table-responsive table-bordered">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>SUBJECT</th>
+                <th>MARKS OBTAINED</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>21MAT21</td>
+                <td><input type="number" id="21MAT21" placeholder=""></input></td>
+              </tr>
+              <tr>
+                <td>21PHY22</td>
+                <td><input type="number" id="21PHY22" placeholder=""></input></td>
+              </tr>
+              <tr>
+                <td>21ELE23</td>
+                <td><input type="number" id="21ELE23" placeholder=""></input></td>
+              </tr>
+              <tr>
+                <td>21CIV24</td>
+                <td><input type="number" id="21CIV24" placeholder=""></input></td>
+              </tr>
+              <tr>
+                <td>21EGDL25</td>
+                <td><input type="number" id="21EGDL25" placeholder=""></input></td>
+              </tr>
+              <tr>
+                <td>21PHYL26</td>
+                <td><input type="number" id="21PHYL26" placeholder=""></input></td>
+              </tr>
+              <tr>
+                <td>21ELEL27</td>
+                <td><input type="number" id="21ELEL27" placeholder=""></input></td>
+              </tr>
+              <tr>
+                <td>21EGH28</td>
+                <td><input type="number" id="21EGH28" placeholder=""></input></td>
+              </tr>
+              <tr>
+                <td>21ITD29</td>
+                <td><input type="number" id="21ITD29" placeholder=""></input></td>
+              </tr>
+              
+                  <td class="fw-bold">SGPA</td>
+                  <td><input type="number" id="sgpa" placeholder="" readonly></input></td>
+                </tr>
+            </tbody>
+          </table>
+          <div class="d-flex justify-content-start gap-2">
+              <button type="button" onClick="Calculate()" class="btn btn-success">Calculate</button>
+              <input type = "reset" value="reset" style="background-color:red; color:white; border:none; border-radius:0.3rem;"></input>
+          </div>
+        </div>
+      </div>
+    </form>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

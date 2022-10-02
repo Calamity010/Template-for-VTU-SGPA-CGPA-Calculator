@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../../index.css"/>
+    <script type="text/javascript">
+
+      function Calculate() {
+       const tc=31;
+       var sum=0;
+       var sgpa;
+       const credits = [4,4,4,4,4,2,2,0];
+       const sub = ["17MAT21","17PHY22","17CIV23","17EME24","17ELE27","17WSL26","17PHYL27","17ENG28"];
+       sub.forEach(myFunction);
+
+       function myFunction(value, index, array) {
+         var g = document.getElementById(value).value;
+         if (g >=90){
+           sum+=10*credits[index];
+         }
+         else if (g >=80){
+           sum+=9*credits[index];
+         }
+         else if (g >=70){
+           sum+=8*credits[index];
+         }
+         else if (g >=60){
+           sum+=7*credits[index];
+         }
+         else if (g >=45){
+           sum+=6*credits[index];
+         }
+         else if (g >=40){
+           sum+=4*credits[index];
+         }
+         else{
+           sum+=0;
+         }
+       }
+       sgpa = sum/tc;
+       document.getElementById('sgpa').value = sgpa.toFixed(2);
+      }
+
+   </script>
+  </head>
+  <body>
+    <form>
+      <div class="container mb-5">
+        <h2>2ND SEMESTER PHYSICS CYCLE</h2>
+        <div class="table-responsive table-bordered">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>SUBJECT</th>
+                <th>MARKS OBTAINED</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>17MAT21</td>
+                <td><input type="number" id="17MAT21" placeholder=""></input></td>
+              </tr>
+              <tr>
+                <td>17PHY22</td>
+                <td><input type="number" id="17PHY22" placeholder=""></input></td>
+              </tr>
+              <tr>
+                <td>17CIV23</td>
+                <td><input type="number" id="17CIV23" placeholder=""></input></td>
+              </tr>
+              <tr>
+                <td>17EME24</td>
+                <td><input type="number" id="17EME24" placeholder=""></input></td>
+              </tr>
+              <tr>
+                <td>17ELE27</td>
+                <td><input type="number" id="17ELE27" placeholder=""></input></td>
+              </tr>
+              <tr>
+                <td>17WSL26</td>
+                <td><input type="number" id="17WSL26" placeholder=""></input></td>
+              </tr>
+              <tr>
+                <td>17PHYL27</td>
+                <td><input type="number" id="17PHYL27" placeholder=""></input></td>
+              </tr>
+              <tr>
+                <td>17ENG28</td>
+                <td><input type="number" id="17ENG28" placeholder=""></input></td>
+              </tr>
+                <tr>
+                  <td class="fw-bold">SGPA</td>
+                  <td><input type="number" placeholder="" readonly></input></td>
+                </tr>
+            </tbody>
+          </table>
+          <div class="d-flex justify-content-start gap-2">
+              <button type="button" onClick="Calculate()" class="btn btn-success">Calculate</button>
+              <input type = "reset" value="reset" style="background-color:red; color:white; border:none; border-radius:0.3rem;"></input>
+          </div>
+        </div>
+      </div>
+    </form>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VTU-SGPA/CGPA CALCULATOR</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <script type="text/javascript">
+    function calculate(){
+        var tc=175;
+        var sum=0;
+        var cgpa;
+        const credits = [20,20,24,24,25,24,20,18]
+        const sem = ["1stSem", "2ndSem", "3rdSem", "4thSem", "5thSem", "6thSem", "7thSem", "8thSem"];
+        sem.forEach(myFunction);
+
+        function myFunction(value, index, array) {
+          var g = document.getElementById(value).value;
+          if (g ==0){
+            tc = tc-credits[index];
+          }
+          else{
+            sum+= g*credits[index];
+          }
+        }
+        cgpa = sum/tc;
+        document.getElementById('cgpa').value = cgpa.toFixed(2);
+    };
+  </script>
+  <script type="text/javascript">
+    function calculatePercent(){
+        var cgpa = document.getElementById('cgpaObtained').value;
+        console.log(cgpa) 
+       percent = (cgpa-0.75)*10;
+        document.getElementById('percentage').value=percent.toFixed(2);
+    };
+  </script>
+  <body>
+    <!-- navbar-section -->
+    <nav
+      style = "background-image:linear-gradient(to right, #ff9966, #ff5e62);"
+      class="navbar navbar-expand-md justify-content-center"
+    >
+      <div class="container">
+        <a href="/" class="navbar-brand d-flex w-50 me-auto text-white">ORPLE-VTUCalc</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapsingNavbar3"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
+          <ul class="nav navbar-nav ms-auto w-100 justify-content-end">
+            <li class="nav-item">
+              <a class="nav-link fs-6 text-white" href="#">Home</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link fs-6" href="#">Scheme</a>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End navbar-section -->
+
+    <!-- content-section -->
+    <!-- Button trigger modal -->
+    <div class="card mx-auto w-50 mt-5 text-center" style ="background-image: linear-gradient(to right, #dd2476, #ff512f); border:none;">
+      <div class="text-white fs-1 p-2"> VTU CGPA CALCULATOR</div>
+      <div class="card-body">
+        <a href="#" class="btn text-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style = "border-radius: 0.3rem; background-color: white;">Calculate CGPA</a>
+      </div>
+      <div class="card-footer text-white">
+        (Input Zero values for semesters that are not yet completed)
+      </div>
+      <div>
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">CGPA CALCULATOR</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="table-responsive table-bordered">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>SEMESTER</th>
+                          <th>SGPA OBTAINED</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1ST SEMESTER</td>
+                          <td><input type="number" id="1stSem" placeholder=""></input></td>
+                        </tr>
+                        <tr>
+                          <td>2ND SEMESTER</td>
+                          <td><input type="number" id="2ndSem" placeholder=""></input></td>
+                        </tr>
+                        <tr>
+                          <td>3RD SEMESTER</td>
+                          <td><input type="number" id="3rdSem" placeholder=""></input></td>
+                        </tr>
+                        <tr>
+                          <td>4TH SEMESTER</td>
+                          <td><input type="number" id="4thSem" placeholder=""></input></td>
+                        </tr>
+                        <tr>
+                          <td>5TH SEMESTER</td>
+                          <td><input type="number" id="5thSem" placeholder=""></input></td>
+                        </tr>
+                        <tr>
+                          <td>6TH SEMESTER</td>
+                          <td><input type="number" id="6thSem" placeholder=""></input></td>
+                        </tr>
+                        <tr>
+                          <td>7TH SEMESTER</td>
+                          <td><input type="number" id="7thSem" placeholder=""></input></td>
+                        </tr>
+                        <tr>
+                          <td>8TH SEMESTER</td>
+                          <td><input type="number" id="8thSem" placeholder=""></input></td>
+                        </tr>
+                          <tr>
+                            <td class="fw-bold">TOTAL CGPA</td>
+                            <td><input type="number" id="cgpa" placeholder="" readonly></input></td>
+                          </tr>
+                      </tbody>
+                    </table>
+                    <div class="d-flex justify-content-start gap-2">
+                        <button type="button" id="cgpac" onclick="calculate()" class="btn btn-success">Calculate</button>
+                        <input type = "reset" value="reset" style="background-color:red; color:white; border:none; border-radius:0.3rem;"></input>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card mx-auto w-50 mt-5 text-center" style ="background-image: linear-gradient(to right, #dd2476, #ff512f); border:none;">
+      <div class="text-white fs-1 p-2"> VTU SGPA CALCULATOR</div>
+      <div class="card-body">
+        <a href="#" class="btn text-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop-2" style = "border-radius: 0.3rem; background-color: white;">Calculate SGPA</a>
+      </div>
+      <div>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop-2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">CHOOSE SCHEME</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul style="list-style: none; display: flex; justify-content: center; gap:3rem;">
+          <li><a href="2017-scheme/2017_scheme.html"><button class="btn btn-outline-dark">2017 SCHEME</button></a></li>
+          <li><a href="2018-scheme/2018_scheme.html"><button class="btn btn-outline-dark">2018 SCHEME</button></a></li>
+          <li><a href="2021-scheme/2021_scheme.html"><button class="btn btn-outline-dark">2021 SCHEME</button></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+      </div>
+      <div class="card-footer text-white">
+        (Input Zero values for subjects not opted)
+      </div>
+    </div>
+    <div class="card mx-auto w-50 mt-5 text-center" style ="background-image: linear-gradient(to right, #dd2476, #ff512f); border:none;">
+      <div class="text-white fs-1 p-2">CGPA TO PERCENTAGE</div>
+      <div class="card-body">
+        <a href="#" class="btn text-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1" style = "border-radius: 0.3rem; background-color: white;">Calculate CGPA</a>
+      </div>
+      <div>
+        <div class="modal fade" id="staticBackdrop-1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">CGPA TO PERCENTAGE</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="table-responsive table-bordered">
+                    <table class="table table-striped">
+                      <thead>
+                       
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>ENTER YOUR CGPA</td>
+                          <td colspan="2"><input type="number" id="cgpaObtained" placeholder=""></input></td>
+                        </tr>
+                          <tr>
+                            <td class="fw-bold">PERCENTAGE OBTAINED</td>
+                            <td><input type="number" id="percentage" placeholder="" readonly></input></td>
+                          </tr>
+                      </tbody>
+                    </table>
+                    <div class="d-flex justify-content-start gap-2">
+                        <button type="button" id="cgpac" onclick="calculatePercent()" class="btn btn-success">Calculate</button>
+                        <input type = "reset" value="reset" style="background-color:red; color:white; border:none; border-radius:0.3rem;"></input>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- end content-section -->
+
+    <!-- JS Scripts -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    >
+  </script>
+  </body>
+</html>
